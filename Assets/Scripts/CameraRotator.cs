@@ -10,6 +10,6 @@ public class CameraRotator : MonoBehaviour
    
     void Update()
     {
-        transform.Rotate(rotationSpeed * Time.deltaTime, rotationSpeed * Time.deltaTime, rotationSpeed * Time.deltaTime);
+        transform.Rotate(rotationSpeed * 1.1f * Time.deltaTime, rotationSpeed * 0.9f * Time.deltaTime, rotationSpeed * Time.deltaTime);
     }
 }
