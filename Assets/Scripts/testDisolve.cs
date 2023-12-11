@@ -5,8 +5,9 @@ using UnityEngine;
 public class testDisolve : MonoBehaviour
 {
 
-    [SerializeField] private Material material;
+    [SerializeField] private Material[] materials;
     [SerializeField] private float dissolveSpeed;
+    [SerializeField] private float cutOffAmount;
 
     private float cutOffTarget;
     private float cutOff;
@@ -14,9 +15,9 @@ public class testDisolve : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        material = GetComponent<Renderer>().material;
-        cutOffTarget =1f;
-        cutOff = 1f;
+        materials = GetComponent<Renderer>().materials;
+        cutOffTarget = 5f;
+        cutOff = cutOffTarget;
     }
 
     // Update is called once per frame
@@ -34,7 +35,15 @@ public class testDisolve : MonoBehaviour
             cutOffTarget = -2f;
         }
 
+        foreach (Material mat in materials)
+        {
+            mat.SetFloat("_Cutoff_Height", cutOff);
+        }
+        
+    }
 
-        material.SetFloat("_Cutoff_Height", cutOff);
+    public void dissolvePlanetClick()
+    {
+        cutOffTarget -= cutOffAmount;
     }
 }
