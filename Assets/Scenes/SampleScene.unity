@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0033084191, g: 0.0033894838, b: 0.0037831808, a: 1}
+  m_IndirectSpecularColor: {r: 0.0033128182, g: 0.0033938915, b: 0.0037875935, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -277,7 +277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05458975, y: 0.178}
   m_AnchorMax: {x: 0.3048315, y: 0.38827905}
-  m_AnchoredPosition: {x: -0.2906494, y: 0.7001648}
+  m_AnchoredPosition: {x: -0.2906494, y: 0.70025635}
   m_SizeDelta: {x: 9.41861, y: 1.3936005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &139543261
@@ -847,6 +847,25 @@ MonoBehaviour:
   materials: []
   dissolveSpeed: 4
   cutOffAmount: 0.1
+  colors:
+  - {r: 0.33196664, g: 0.6886792, b: 0.28261837, a: 0}
+  - {r: 0.4009434, g: 0.6494682, b: 1, a: 0}
+  - {r: 0.8867924, g: 0.76897174, b: 0.72365606, a: 0}
+  - {r: 0.8301887, g: 0.58283067, b: 0.41901034, a: 0}
+--- !u!114 &730246337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730246329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0154c3e91d9a7419d7e7b406d6eb48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetList: []
+  levelMultiplier: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,7 +1207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3825718, y: 0.7292487}
   m_AnchorMax: {x: 0.6003812, y: 0.84449744}
-  m_AnchoredPosition: {x: -0.099975586, y: 2.6998901}
+  m_AnchoredPosition: {x: -0.099975586, y: 2.6998596}
   m_SizeDelta: {x: 1, y: -8}
   m_Pivot: {x: 0.49999997, y: 0.5000001}
 --- !u!1 &1194541166
@@ -2009,6 +2028,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 898f3f493366aa34e8c1ca7028411db6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 730246333}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 898f3f493366aa34e8c1ca7028411db6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 730246337}
   m_SourcePrefab: {fileID: 100100000, guid: 898f3f493366aa34e8c1ca7028411db6, type: 3}
 --- !u!1 &1858985164
 GameObject:

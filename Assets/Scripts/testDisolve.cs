@@ -9,6 +9,8 @@ public class testDisolve : MonoBehaviour
     [SerializeField] private float dissolveSpeed;
     [SerializeField] private float cutOffAmount;
 
+    public Color[] colors; 
+
     private float cutOffTarget;
     private float cutOff;
 
@@ -16,6 +18,12 @@ public class testDisolve : MonoBehaviour
     void Start()
     {
         materials = GetComponent<Renderer>().materials;
+
+        for (int i = 0; i < materials.Length; i++)
+        {
+
+            materials[i].SetColor("_Albedo", colors[i]);
+        }
         cutOffTarget = 5f;
         cutOff = cutOffTarget;
     }
