@@ -14,17 +14,13 @@ public class Player : MonoBehaviour
     public float autoClickSpeed = 1f;
     public bool autoClick = false;
 
+    [SerializeField] private GameObject satelite;
+
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(AutoClick());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private IEnumerator AutoClick()
@@ -56,6 +52,9 @@ public class Player : MonoBehaviour
 
     public void SpeedUpAutoClick()
     {
+        GameObject tempSatelite = Instantiate(satelite);
+        tempSatelite.transform.SetParent(GameObject.Find("ShipRotator").transform);
+        tempSatelite.transform.position = new Vector3(-5,0,0);
         autoClickSpeed *= 0.9f;
     }
 

@@ -7,6 +7,9 @@ public class autoShoot : MonoBehaviour
 
     [SerializeField] private GameObject particlesLazer;
 
+    [Range(0.0f, 0.2f)]
+    [SerializeField] private float sateliteSpeed;
+
     private void Start()
     {
         StartCoroutine(autoShootCoroutine());
@@ -28,9 +31,13 @@ public class autoShoot : MonoBehaviour
     public IEnumerator aroundTheWorldAroundTheWorld()
     {
 
+        float randomX = Random.Range(-1, 1);
+        float randomY = Random.Range(-1, 1);
+        float randomZ = Random.Range(-1, 1);
+
         while (true)
         {
-            transform.RotateAround(transform.parent.position, transform.position, 1);
+            transform.RotateAround(transform.parent.position, new Vector3(randomX, randomY, randomZ), sateliteSpeed);
             yield return new WaitForEndOfFrame();
         }
 
