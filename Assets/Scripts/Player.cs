@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public bool autoClick = false;
 
     [SerializeField] private GameObject satelite;
+    [SerializeField] private GameObject shipRotator;
 
 
     // Start is called before the first frame update
@@ -54,7 +55,9 @@ public class Player : MonoBehaviour
     {
         GameObject tempSatelite = Instantiate(satelite);
         tempSatelite.transform.SetParent(GameObject.Find("ShipRotator").transform);
-        tempSatelite.transform.position = new Vector3(-5,0,0);
+        tempSatelite.transform.position = new Vector3(Random.Range(-5.3f, -4f),0,0);
+        tempSatelite.transform.rotation = Quaternion.Euler(tempSatelite.transform.rotation.eulerAngles.x, tempSatelite.transform.rotation.eulerAngles.y + 180, tempSatelite.transform.rotation.eulerAngles.z);
+        tempSatelite.transform.RotateAround(shipRotator.transform.position, new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)), Random.Range(-180f, 180f));
         autoClickSpeed *= 0.9f;
     }
 

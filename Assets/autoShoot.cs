@@ -7,13 +7,13 @@ public class autoShoot : MonoBehaviour
 
     [SerializeField] private GameObject particlesLazer;
 
-    [Range(0.0f, 0.2f)]
+    [Range(10f, 1000f)]
     [SerializeField] private float sateliteSpeed;
 
     private void Start()
     {
         StartCoroutine(autoShootCoroutine());
-        StartCoroutine(aroundTheWorldAroundTheWorld());
+        StartCoroutine(makeSateliteAroundWorld());
 
     }
 
@@ -28,16 +28,16 @@ public class autoShoot : MonoBehaviour
 
     }
 
-    public IEnumerator aroundTheWorldAroundTheWorld()
+    public IEnumerator makeSateliteAroundWorld()
     {
 
-        float randomX = Random.Range(-1, 1);
-        float randomY = Random.Range(-1, 1);
-        float randomZ = Random.Range(-1, 1);
+        float randomX = Random.Range(-1f, 1f);
+        float randomY = Random.Range(-1f, 1f);
+        float randomZ = Random.Range(-1f, 1f);
 
         while (true)
         {
-            transform.RotateAround(transform.parent.position, new Vector3(randomX, randomY, randomZ), sateliteSpeed);
+            transform.RotateAround(transform.parent.position, new Vector3(randomX, randomY, randomZ), sateliteSpeed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
 

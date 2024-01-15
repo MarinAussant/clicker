@@ -94,4 +94,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particlesLazer: {fileID: 2224721244282623751, guid: 71eccdaa36f668a4b822fdbaa5ef19d3, type: 3}
-  sateliteSpeed: 0.05
+  sateliteSpeed: 20
