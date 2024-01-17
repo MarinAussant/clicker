@@ -7,10 +7,9 @@ public class ScriptablePlanet : ScriptableObject
 {
 
     public Mesh mesh;
-    public Material[] materials;
+    public Color[] colors;
     public int hpMin, hpMax;
     public string planetName;
 
-    public Color[] colors;
 
 }

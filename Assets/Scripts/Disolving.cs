@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class testDisolve : MonoBehaviour
+public class Disolving : MonoBehaviour
 {
 
     [SerializeField] private Material[] materials;
@@ -36,22 +36,26 @@ public class testDisolve : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.D))
         {
-            cutOffTarget = 3f;
+            cutOffTarget = 5f;
         }
         if (Input.GetKeyUp(KeyCode.Q))
         {
-            cutOffTarget = -2f;
+            cutOffTarget = -3f;
         }
 
         foreach (Material mat in materials)
         {
             mat.SetFloat("_Cutoff_Height", cutOff);
         }
+        if (cutOffTarget < -3f)
+        {
+            GetComponent<planetManager>().spawnNewPlanet();
+        }
         
     }
 
-    public void dissolvePlanetClick()
+    public void disolvePlanet(float multiplier, float planeteHpMax)
     {
-        cutOffTarget -= cutOffAmount;
+        cutOffTarget -= (cutOffAmount * multiplier) / planeteHpMax;
     }
 }

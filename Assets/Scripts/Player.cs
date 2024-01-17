@@ -18,8 +18,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject shipRotator;
 
-    [SerializeField] private ScriptableThrowableObject[] throwableObject;
-    private ScriptableThrowableObject selectedThrowableObject;
+    [SerializeField] private GameObject[] throwableObject;
+    private GameObject selectedThrowableObject;
 
     // Start is called before the first frame update
     void Start()
@@ -36,20 +36,18 @@ public class Player : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Vector3 mousePosition = Input.mousePosition;
-                Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out var info, 20))
                 {
                     if (info.collider.gameObject.name == "PlanetManager")
                     {
-                        GameObject throwableObject = Instantiate(selectedThrowableObject.throwableObject, Camera.main.transform.position, Camera.main.transform.parent.transform.rotation);
+                        GameObject throwableObject = Instantiate(selectedThrowableObject, Camera.main.transform.position, Camera.main.transform.parent.transform.rotation);
                         throwableObject.transform.position += (Vector3.zero - throwableObject.transform.position) / 20;
-                        throwableObject.GetComponent<Rigidbody>().AddForce((ray.GetPoint(15) - throwableObject.transform.position) * selectedThrowableObject.speed);
-
+                        throwableObject.GetComponent<Rigidbody>().AddForce((ray.GetPoint(15) - throwableObject.transform.position) * selectedThrowableObject.GetComponent<ThrowableObject>().speed);
+                        // GERER Rotation de l'asteroid ICI
                     }
                 }
             }
-            //Debug.Log(Input.mousePosition);
             yield return null;
         }
 
