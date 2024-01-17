@@ -9,19 +9,50 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI moneyText;
 
     public float money;
-    public float power = 1;
 
     public float autoClickSpeed = 1f;
     public bool autoClick = false;
+    [SerializeField] private float clickCooldown = 3;
 
     [SerializeField] private GameObject satelite;
+
     [SerializeField] private GameObject shipRotator;
 
+    [SerializeField] private ScriptableThrowableObject[] throwableObject;
+    private ScriptableThrowableObject selectedThrowableObject;
 
     // Start is called before the first frame update
     void Start()
     {
+        selectedThrowableObject = throwableObject[0];
+        StartCoroutine(ShootClick());
         StartCoroutine(AutoClick());
+    }
+
+    private IEnumerator ShootClick()
+    {
+
+        while (true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mousePosition = Input.mousePosition;
+                Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+                if (Physics.Raycast(ray, out var info, 20))
+                {
+                    if (info.collider.gameObject.name == "PlanetManager")
+                    {
+                        GameObject throwableObject = Instantiate(selectedThrowableObject.throwableObject, Camera.main.transform.position, Camera.main.transform.parent.transform.rotation);
+                        throwableObject.transform.position += (Vector3.zero - throwableObject.transform.position) / 20;
+                        throwableObject.GetComponent<Rigidbody>().AddForce((ray.GetPoint(15) - throwableObject.transform.position) * selectedThrowableObject.speed);
+
+                    }
+                }
+            }
+            //Debug.Log(Input.mousePosition);
+            yield return null;
+        }
+
     }
 
     private IEnumerator AutoClick()
@@ -42,13 +73,12 @@ public class Player : MonoBehaviour
 
     public void ClickOnSphere()
     {
-        money += power;
         moneyText.text = money + " €";
     }
 
     public void AddPower()
     {
-        power += 1;
+        //power += 1;
     }
 
     public void SpeedUpAutoClick()

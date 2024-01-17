@@ -28,4 +28,13 @@ public class planetManager : MonoBehaviour
         hp = (int) (Random.Range(currentPlanete.hpMin, currentPlanete.hpMax) * levelMultiplier);
         planetName = currentPlanete.planetName;
     }
+
+
+
+    //TEMPORAIRE
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject);
+    }
+  
 }
