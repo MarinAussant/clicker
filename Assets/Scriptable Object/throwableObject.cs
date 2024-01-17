@@ -11,4 +11,5 @@ public class ScriptableThrowableObject : ScriptableObject
     [Range(1f, 100f)] public float speed;
 
 
+
 }
