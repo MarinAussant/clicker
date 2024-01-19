@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,27 +6,30 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    public TextMeshProUGUI moneyText;
-
-    public float money;
-
-    public float autoClickSpeed = 1f;
-    public bool autoClick = false;
-    [SerializeField] private float clickCooldown = 3;
+    [SerializeField] private TextMeshProUGUI moneyText;
 
     [SerializeField] private GameObject satelite;
-
     [SerializeField] private GameObject shipRotator;
-
     [SerializeField] private GameObject[] throwableObject;
+
     private GameObject selectedThrowableObject;
+
+
+
+    public float stellar;
+
+    public float autoClickSpeed = 1f;
+
+    [SerializeField] private float clickCooldown = 3;
+
+    public bool autoClick = false;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         selectedThrowableObject = throwableObject[0];
         StartCoroutine(ShootClick());
-        StartCoroutine(AutoClick());
     }
 
     private IEnumerator ShootClick()
@@ -53,30 +56,12 @@ public class Player : MonoBehaviour
 
     }
 
-    private IEnumerator AutoClick()
+    public void getMoney(float amount)
     {
+        stellar += amount;
+        if (stellar < 10) { moneyText.text = Mathf.Round(stellar * 10.0f) * 0.1 + "  ʂ "; }
+        else { moneyText.text = Mathf.Round(stellar) + "  ʂ "; }
 
-        while (!autoClick)
-        {
-            yield return new WaitForSeconds(autoClickSpeed);
-        }
-        while (autoClick)
-        {
-            ClickOnSphere();
-            yield return new WaitForSeconds(autoClickSpeed);
-        }
-
-        
-    }
-
-    public void ClickOnSphere()
-    {
-        moneyText.text = money + " �";
-    }
-
-    public void AddPower()
-    {
-        //power += 1;
     }
 
     public void SpeedUpAutoClick()

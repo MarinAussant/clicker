@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f4379231e0330e44ae5e50e78da841e, type: 3}
-  m_Name: planet 2
+  m_Name: Green Rocks
   m_EditorClassIdentifier: 
-  mesh: {fileID: -2837682660325928517, guid: 898f3f493366aa34e8c1ca7028411db6, type: 3}
+  mesh: {fileID: 8911429290685839654, guid: 20e7217ea222bd84da15f5a3193dfe5c, type: 3}
   colors:
-  - {r: 0.8537736, g: 0.9418874, b: 1, a: 0}
-  - {r: 0.6556604, g: 0.92320585, b: 1, a: 0}
+  - {r: 0.33333334, g: 0.6901961, b: 0.28235295, a: 0}
+  - {r: 0.4, g: 0.6509804, b: 1, a: 0}
   - {r: 0.8862745, g: 0.76862746, b: 0.7254902, a: 0}
-  - {r: 0.6450694, g: 0.7447386, b: 0.9056604, a: 0}
-  hpMin: 0
-  hpMax: 0
-  planetName: Icy
+  hpMin: 14
+  hpMax: 18
+  planetName: Green Rocks
+  textColor: {r: 0.33333334, g: 0.6901961, b: 0.28235295, a: 1}
+  value: 150

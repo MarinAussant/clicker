@@ -10,6 +10,7 @@ public class ScriptablePlanet : ScriptableObject
     public Color[] colors;
     public int hpMin, hpMax;
     public string planetName;
-
+    public Color textColor;
+    public float value;
 
 }

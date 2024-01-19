@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwableObject: {fileID: 563006621715958353, guid: 572bd6f4afbcc66449f72bbc78ff0c27, type: 3}
   power: 10
-  speed: 30
+  speed: 15

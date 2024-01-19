@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Disolving : MonoBehaviour
 {
-
-    [SerializeField] private Material[] materials;
     [SerializeField] private float dissolveSpeed;
     [SerializeField] private float cutOffAmount;
 
@@ -17,13 +15,6 @@ public class Disolving : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        materials = GetComponent<Renderer>().materials;
-
-        for (int i = 0; i < materials.Length; i++)
-        {
-
-            materials[i].SetColor("_Albedo", colors[i]);
-        }
         cutOffTarget = 5f;
         cutOff = cutOffTarget;
     }
@@ -31,7 +22,6 @@ public class Disolving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         cutOff = Mathf.Lerp(cutOff,cutOffTarget,Time.deltaTime * dissolveSpeed);
 
         if (Input.GetKeyUp(KeyCode.D))
@@ -43,19 +33,25 @@ public class Disolving : MonoBehaviour
             cutOffTarget = -3f;
         }
 
-        foreach (Material mat in materials)
+        foreach (Material mat in GetComponent<Renderer>().materials)
         {
             mat.SetFloat("_Cutoff_Height", cutOff);
         }
+
         if (cutOffTarget < -3f)
         {
             GetComponent<planetManager>().spawnNewPlanet();
+            cutOffTarget = 5f;
         }
+
+        
         
     }
 
     public void disolvePlanet(float multiplier, float planeteHpMax)
     {
+
         cutOffTarget -= (cutOffAmount * multiplier) / planeteHpMax;
+
     }
 }

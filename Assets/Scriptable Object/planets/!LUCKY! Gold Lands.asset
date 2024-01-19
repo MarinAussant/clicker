@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4379231e0330e44ae5e50e78da841e, type: 3}
+  m_Name: '!LUCKY! Gold Lands'
+  m_EditorClassIdentifier: 
+  mesh: {fileID: -2837682660325928517, guid: 898f3f493366aa34e8c1ca7028411db6, type: 3}
+  colors:
+  - {r: 1, g: 0.8675134, b: 0.25943398, a: 0}
+  - {r: 1, g: 0.92941177, b: 0.61960787, a: 0}
+  - {r: 1, g: 0.93126684, b: 0.6179246, a: 0}
+  - {r: 1, g: 0.98736525, b: 0.9292453, a: 0}
+  hpMin: 123
+  hpMax: 130
+  planetName: '!LUCKY! Gold Lands'
+  textColor: {r: 1, g: 0.8666667, b: 0.25882354, a: 1}
+  value: 5000
