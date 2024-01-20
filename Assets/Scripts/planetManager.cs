@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ public class planetManager : MonoBehaviour
     private string planetName;
     private float hp;
     private ScriptablePlanet currentPlanete;
+    private int planetCompt;
 
     void Start()
     {
@@ -39,6 +41,8 @@ public class planetManager : MonoBehaviour
         planetNameText.SetText(currentPlanete.planetName);
         planetNameText.color = currentPlanete.textColor;
 
+        planetCompt = 1;
+
 
     }
 
@@ -46,7 +50,20 @@ public class planetManager : MonoBehaviour
     public void spawnNewPlanet()
     {
 
-        currentPlanete = planetList[Random.Range(0, planetList.Length)];
+        if (bossPlanetList.Contains<ScriptablePlanet>(currentPlanete))
+        {
+            levelMultiplier *= 2f;
+        }
+
+        if (planetCompt % 15 == 0)
+        {
+            currentPlanete = bossPlanetList[Random.Range(0, bossPlanetList.Length)];
+        }
+        else
+        {
+            currentPlanete = planetList[Random.Range(0, planetList.Length)];
+        }
+        
         hp =  Random.Range(currentPlanete.hpMin, currentPlanete.hpMax) * levelMultiplier;
         planetName = currentPlanete.planetName;
         meshCollider.sharedMesh = currentPlanete.mesh;
@@ -58,20 +75,24 @@ public class planetManager : MonoBehaviour
         planetNameText.SetText(currentPlanete.planetName);
         planetNameText.color = currentPlanete.textColor;
 
+        planetCompt++;
+
     }
 
-    //TEMPORAIRE
+    public void takeDamage(float damage)
+    {
+        GetComponent<Disolving>().disolvePlanet(damage, hp);
+        FindAnyObjectByType<Player>().getMoney(((damage * 0.008f) / hp * currentPlanete.value) * levelMultiplier);
+    }
+
+  
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "ThrowableObject")
         {
-            float throwablePower = other.gameObject.GetComponent<ThrowableObject>().power;
-            GetComponent<Disolving>().disolvePlanet(throwablePower, hp);
-            FindAnyObjectByType<Player>().getMoney((levelMultiplier * (currentPlanete.value / throwablePower)) * 2);
-
-            Destroy(other.gameObject);
+            takeDamage(other.gameObject.GetComponent<ThrowableObject>().power);
+            other.gameObject.GetComponent<ThrowableObject>().Explosion();
         }
         
-    }
-  
+    } 
 }

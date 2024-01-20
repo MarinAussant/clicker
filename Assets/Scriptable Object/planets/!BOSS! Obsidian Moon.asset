@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f4379231e0330e44ae5e50e78da841e, type: 3}
-  m_Name: Obsidian Lands
+  m_Name: '!BOSS! Obsidian Moon'
   m_EditorClassIdentifier: 
-  mesh: {fileID: -2837682660325928517, guid: 898f3f493366aa34e8c1ca7028411db6, type: 3}
+  mesh: {fileID: 8911429290685839654, guid: dd2b4677d19b4384282daa56998e0fbf, type: 3}
   colors:
-  - {r: 0.27058825, g: 0.15294118, b: 0.42352942, a: 0}
-  - {r: 0.13725491, g: 0.07058824, b: 0.29411766, a: 0}
-  - {r: 0.05421347, g: 0.002892488, b: 0.122641504, a: 0}
-  - {r: 0.61617815, g: 0.46079564, b: 0.8962264, a: 0}
-  hpMin: 93
-  hpMax: 100
-  planetName: Obsidian Lands
+  - {r: 0.2713377, g: 0.15419187, b: 0.4245283, a: 0}
+  - {r: 0.13651128, g: 0.07035421, b: 0.2924528, a: 0}
+  hpMin: 90
+  hpMax: 96
+  planetName: '!BOSS! Obsidian Moon'
   textColor: {r: 0.6156863, g: 0.4627451, b: 0.8980392, a: 1}
-  value: 2500
+  value: 2000

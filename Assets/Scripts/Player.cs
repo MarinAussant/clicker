@@ -8,10 +8,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI moneyText;
 
-    [SerializeField] private GameObject satelite;
-    [SerializeField] private GameObject shipRotator;
-    [SerializeField] private GameObject[] throwableObject;
+    [SerializeField] private GameObject[] autoShootHelperList;
+    [SerializeField] private GameObject autoShootRotator;
 
+    [SerializeField] private GameObject[] throwableObject;
     private GameObject selectedThrowableObject;
 
 
@@ -59,19 +59,22 @@ public class Player : MonoBehaviour
     public void getMoney(float amount)
     {
         stellar += amount;
-        if (stellar < 10) { moneyText.text = Mathf.Round(stellar * 10.0f) * 0.1 + "  ʂ "; }
-        else { moneyText.text = Mathf.Round(stellar) + "  ʂ "; }
+        if (stellar < 10) { moneyText.text = Mathf.Round(stellar * 10.0f) * 0.1 + "Ṩ"; }
+        else { moneyText.text = Mathf.Round(stellar) + "Ṩ"; }
 
     }
 
-    public void SpeedUpAutoClick()
+    public void SelectedThrowableObject(int index)
     {
-        GameObject tempSatelite = Instantiate(satelite);
-        tempSatelite.transform.SetParent(GameObject.Find("ShipRotator").transform);
-        tempSatelite.transform.position = new Vector3(Random.Range(-5.3f, -4f),0,0);
-        tempSatelite.transform.rotation = Quaternion.Euler(tempSatelite.transform.rotation.eulerAngles.x, tempSatelite.transform.rotation.eulerAngles.y + 180, tempSatelite.transform.rotation.eulerAngles.z);
-        tempSatelite.transform.RotateAround(shipRotator.transform.position, new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)), Random.Range(-180f, 180f));
-        autoClickSpeed *= 0.9f;
+        selectedThrowableObject = throwableObject[index];
+    }
+
+    public void PlaceAutoShootHelper(int index)
+    {
+        GameObject autoShootHelper = Instantiate(autoShootHelperList[index]);
+        autoShootHelper.transform.SetParent(GameObject.Find("ShipRotator").transform);
+        autoShootHelper.transform.position = new Vector3(autoShootHelper.GetComponent<autoShoot>().distance, 0, 0);
+        autoShootHelper.transform.RotateAround(autoShootRotator.transform.position, new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)), Random.Range(-180f, 180f));
     }
 
 }

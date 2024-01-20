@@ -5,7 +5,7 @@ using UnityEngine;
 public class Disolving : MonoBehaviour
 {
     [SerializeField] private float dissolveSpeed;
-    [SerializeField] private float cutOffAmount;
+    [SerializeField] public float cutOffAmount;
 
     public Color[] colors; 
 

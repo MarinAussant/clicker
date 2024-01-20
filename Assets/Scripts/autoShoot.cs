@@ -8,7 +8,10 @@ public class autoShoot : MonoBehaviour
     [SerializeField] private GameObject particlesLazer;
 
     [Range(10f, 1000f)]
-    [SerializeField] private float sateliteSpeed;
+    [SerializeField] private float speed;
+    [SerializeField] private float shootSpeed;
+    [SerializeField] public float power;
+    [SerializeField] public float distance;
 
     private void Start()
     {
@@ -22,8 +25,9 @@ public class autoShoot : MonoBehaviour
 
         while(true)
         {
+            FindAnyObjectByType<planetManager>().takeDamage(power);
             Instantiate(particlesLazer, transform);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(shootSpeed);
         }
 
     }
@@ -37,7 +41,7 @@ public class autoShoot : MonoBehaviour
 
         while (true)
         {
-            transform.RotateAround(transform.parent.position, new Vector3(randomX, randomY, randomZ), sateliteSpeed * Time.deltaTime);
+            transform.RotateAround(transform.parent.position, new Vector3(randomX, randomY, randomZ), speed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
 
